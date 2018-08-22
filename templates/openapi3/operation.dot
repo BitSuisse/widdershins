@@ -19,7 +19,7 @@
 {{= data.utils.getCodeSamples(data) }}
 {{?}}
 
-`{{= data.methodUpper}} {{=data.method.path}}`
+`{{= data.methodUpper}} {{=data.method.path.replaceAll('%20', ' ').replaceAll('%28', '(').replaceAll('%29', ')')}}`
 
 {{? data.operation.summary && !data.options.tocSummary}}*{{= data.operation.summary }}*{{?}}
 
@@ -39,7 +39,9 @@
 {{#def.parameters}}
 {{?}}
 
+{{? data.operation.responses }}
 {{#def.responses}}
+{{?}}
 
 {{#def.callbacks}}
 

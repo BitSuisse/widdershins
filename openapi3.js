@@ -297,9 +297,11 @@ function getParameters(data) {
 
     data.queryString = data.uriExample.substr(data.uriExample.indexOf('?'));
     if (!data.queryString.startsWith('?')) data.queryString = '';
+    data.requiredQueryString = data.queryString.split('%20').join(' ');
     data.queryString = data.queryString.split('%25').join('%');
     data.requiredQueryString = data.requiredUriExample.substr(data.requiredUriExample.indexOf('?'));
     if (!data.requiredQueryString.startsWith('?')) data.requiredQueryString = '';
+    data.requiredQueryString = data.requiredQueryString.split('%20').join(' ');
     data.requiredQueryString = data.requiredQueryString.split('%25').join('%');
 }
 
