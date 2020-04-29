@@ -45,11 +45,14 @@ function convertToToc(source,data) {
                 }
                 method.slug = sMethodUniqueName.toLowerCase().split(' ').join('-'); // TODO {, } and : ?
                 var tagName = data.translations.defaultTag;
+                var tagDescription = '';
                 if (method.operation.tags && method.operation.tags.length > 0) {
-                    tagName = getTagGroup(method.operation.tags[0], data.options.tagGroups);
+                    var tagData = getTagGroup(method.operation.tags[0], data.options.tagGroups);
+                    tagName = tagData.name;
+                    tagDescription = tagData.description;
                 }
                 if (!resources[tagName]) {
-                    resources[tagName] = { count: 0, methods: {} };
+                    resources[tagName] = { count: 0, methods: {}, description: tagDescription};
                 }
                 resources[tagName].count++;
                 resources[tagName].methods[sMethodUniqueName] = method;
@@ -66,11 +69,11 @@ function getTagGroup(tag, tagGroups){
     if (tagGroups) {
         for (let group of tagGroups) {
             if (group.tags.indexOf(tag) > -1) {
-                return group.title;
+                return {name: group.title, description: group.description};
             }
         }
     }
-    return tag;
+    return {name: tag, description: ''};
 }
 
 function fakeProdCons(data) {
@@ -296,9 +299,11 @@ function getParameters(data) {
 
     data.queryString = data.uriExample.substr(data.uriExample.indexOf('?'));
     if (!data.queryString.startsWith('?')) data.queryString = '';
+    data.requiredQueryString = data.queryString.split('%20').join(' ');
     data.queryString = data.queryString.split('%25').join('%');
     data.requiredQueryString = data.requiredUriExample.substr(data.requiredUriExample.indexOf('?'));
     if (!data.requiredQueryString.startsWith('?')) data.requiredQueryString = '';
+    data.requiredQueryString = data.requiredQueryString.split('%20').join(' ');
     data.requiredQueryString = data.requiredQueryString.split('%25').join('%');
 }
 

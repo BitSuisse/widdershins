@@ -32,6 +32,35 @@ OpenAPI / Swagger / AsyncAPI / Semoasa definition to [Slate](https://github.com/
 Command-line use looks like this:
 ```
 node widdershins [options] {input-file|url} [[-o] output markdown]
+  --customApiKeyValue   Set a custom API key value                      [string]
+  --expandBody          Expand requestBody properties in parameters    [boolean]
+  --headings            Levels of headings to expand in TOC[number] [default: 2]
+  --omitBody            Omit top-level fake body parameter object      [boolean]
+  --resolve             Resolve external $refs                         [boolean]
+  --shallowSchemas      Don't expand schemas past $refs                [boolean]
+  --summary             Use summary instead of operationId for TOC     [boolean]
+  --verbose             Increase verbosity                             [boolean]
+  -h, --help            Show help                                      [boolean]
+  --version             Show version number                            [boolean]
+  -c, --code            Turn generic code samples off                  [boolean]
+  --httpsnippet         Use httpsnippet to generate code samples
+                                                      [boolean] [default: false]
+  -d, --discovery       Include schema.org WebAPI discovery data       [boolean]
+  -e, --environment     Load config/override options from file          [string]
+  -i, --includes        List of files to include, comma separated       [string]
+  -l, --lang            Automatically generate list of languages for code
+                        samples                                        [boolean]
+  --language_tabs       List of language tabs for code samples using
+                        "language[:label[:client]]" format              [string]
+  -m, --maxDepth        Maximum depth for schema examples          [default: 10]
+  -o, --outfile         File to write output markdown to                [string]
+  -r, --raw             Output raw schemas not example values          [boolean]
+  -s, --search          Whether to enable search or not, default true
+                                                       [boolean] [default: true]
+  -t, --theme           Syntax-highlighter theme to use                 [string]
+  -u, --user_templates  directory to load override templates from       [string]
+  -x, --experimental    For backwards compatibility only, ignored      [boolean]
+  -y, --yaml            Display JSON schemas in YAML format            [boolean]
 ```
 
 For example:

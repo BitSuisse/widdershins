@@ -74,6 +74,10 @@ function getCodeSamples(data) {
             ? httpsnippetGenerator.generate
             : fileTemplateGenerator;
 
+        if (data['method']['verb'] === 'ws') {
+            return ''
+        }
+
         const codeSamples = data.header.language_tabs
             .map(tab => {
                 const lang = typeof tab === 'object'
