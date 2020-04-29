@@ -18,8 +18,8 @@
 
 {{= data.utils.getCodeSamples(data) }}
 {{?}}
-
-`{{= data.methodUpper}} {{=data.method.path.replaceAll('%20', ' ').replaceAll('%28', '(').replaceAll('%29', ')')}}`
+{{ console.log('the data', data.method.path); }}
+`{{= data.methodUpper}} {{= data.method.path.replace(/%20/g, ' ').replace(/%28/g, '(').replace(/%29/g, ')')}}`
 
 {{? data.operation.summary && !data.options.tocSummary}}*{{= data.operation.summary }}*{{?}}
 
